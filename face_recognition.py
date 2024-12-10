@@ -23,12 +23,8 @@ while True:
     # Capture frame-by-frame
     ret, frame = webcam.read()
 
-    # Convert the frame to grayscale for face detection
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    gray = cv2.equalizeHist(gray)  # Normalize lighting
-
-    # Detect faces
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=7, minSize=(50, 50))
+    # Detect faces in the original color frame
+    faces = face_cascade.detectMultiScale(frame, scaleFactor=1.2, minNeighbors=7, minSize=(50, 50))
 
     # Loop over detected faces
     for (x, y, w, h) in faces:
