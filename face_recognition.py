@@ -17,14 +17,14 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 padding_ratio = 0.2
 
 # Initialize webcam
-webcam = cv2.VideoCapture(0)
+webcam = cv2.VideoCapture(1)
 
 while True:
     # Capture frame-by-frame
     ret, frame = webcam.read()
 
     # Detect faces in the original color frame
-    faces = face_cascade.detectMultiScale(frame, scaleFactor=1.2, minNeighbors=7, minSize=(50, 50))
+    faces = face_cascade.detectMultiScale(frame, minNeighbors=10, minSize=(100, 100))
 
     # Loop over detected faces
     for (x, y, w, h) in faces:
